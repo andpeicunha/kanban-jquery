@@ -1,91 +1,44 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import React, { useRef, useEffect } from "react";
+import $ from "jquery";
+import "jquery-ui/ui/widgets/draggable";
+import "jquery-ui/themes/base/all.css";
 
 export default function Home() {
+  const draggableRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      if (draggableRef.current && $("#k1").length > 0) {
+        $(draggableRef.current).draggable({
+          grid: [50, 20],
+          cursor: "crosshair",
+          containment: "#k1, #k2",
+        });
+      }
+    });
+  }, [draggableRef]);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="min-h-screen w-full flex flex-row">
+      <div
+        id="k1"
+        className="basis-1/2 bg-red-100 justify-center items-start p-2"
+      >
+        <h1 className="bg-black/30 min-w-full -m-2 justify-center flex text-xs p-2 rounded-b-lg">
+          To Do
+        </h1>
+        <div
+          ref={draggableRef}
+          className="flex justify-center border rounded-md bg-white/50 p-2 w-[80%]"
+        >
+          Arraste-me!
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div id="k2" className=" basis-1/2 bg-blue-100">
+        <h1>Doing</h1>
       </div>
     </main>
-  )
+  );
 }
