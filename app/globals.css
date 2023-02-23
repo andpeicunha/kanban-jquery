@@ -7,14 +7,14 @@
 }
 
 .draggableElement {
-  @apply z-50 absolute border rounded-md bg-white/50 p-2 inset-x-1/2 transform -translate-x-1/2 w-[30%] top-[3rem];
+  @apply z-50 absolute border rounded-md bg-white/50 p-2 top-[3rem];
 }
 
 .etapaKanban {
   @apply flex-col basis-1/2 bg-red-100 p-2 mx-3 mb-3 rounded-b-lg drop-shadow-lg;
 }
 
-#meu-elemento.etapaKanban {
+#dropElement.etapaKanban {
   @apply bg-blue-100 -z-10;
 }
 
