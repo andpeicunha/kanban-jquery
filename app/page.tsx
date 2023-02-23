@@ -30,7 +30,7 @@ export default function Home() {
           const $elementoDestino = $("#meu-elemento");
           const { top, left } = $elementoDestino.position();
           const height = $elementoDestino.outerHeight();
-          const width = $elementoDestino.outerWidth();
+          const width = $elementoDestino.outerWidth(true);
           console.log(
             `Destinho T:${top}px, L:${left}px, H:${height}px, w:${width}px`
           );
@@ -43,7 +43,6 @@ export default function Home() {
             },
             1000
           );
-          console.log(`Posição #Meu-Elemento: ${width * 1}`);
 
           // $(".highlight").removeClass("highlight");
           // $this.addClass("highlight");
@@ -65,10 +64,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen w-full flex flex-row">
-      <div id="k1" className="relative basis-1/2 bg-red-100 p-2">
-        <h1 className="bg-black/10 min-w-full -m-2 -mx-1 flex text-xs p-2 rounded-b-lg justify-center align-middle items-center">
-          To Do
-        </h1>
+      <div id="k1" className="etapaKanban">
+        <h1 className="tituloEtapaKanban">To Do</h1>
 
         <div
           ref={Draggable1}
@@ -81,9 +78,9 @@ export default function Home() {
       <div
         id="meu-elemento"
         ref={Droppable1}
-        className="basis-1/2 bg-purple-200 justify-center items-start p-2"
+        className="bg-blue-100 etapaKanban"
       >
-        <h1 className="bg-black/20 min-w-full -m-2 -mx-1 flex text-xs p-2 rounded-b-lg justify-center align-middle items-center">
+        <h1 className="tituloEtapaKanban">
           <p id="">Doing</p>
         </h1>
       </div>

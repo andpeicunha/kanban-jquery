@@ -6,6 +6,18 @@
   transition: all 0.3s ease-out;
 }
 
+.etapaKanban {
+  @apply relative basis-1/2 bg-red-100 p-2 mx-3 mb-3 rounded-b-lg;
+}
+
+#meu-elemento.etapaKanban {
+  @apply bg-blue-100;
+}
+
+.tituloEtapaKanban {
+  @apply bg-black/10 min-w-full -m-2 -mx-1 flex text-xs p-2 rounded-b-lg justify-center align-middle items-center;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
